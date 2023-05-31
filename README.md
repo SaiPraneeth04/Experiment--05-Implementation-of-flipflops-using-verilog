@@ -109,19 +109,79 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Sai Praneeth K
+RegisterNumber:  212222230067
 */
+## SR Flip Flop:
+```python
+module flipflops(S,R,clk,Q,Qbar);
+input S,R,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=S|((~R)&Q);
+Qbar=R|((~S)&(Qbar));
+end
+endmodule
+```
+## D Flip Flop:
+```python
+module flipflops(D,clk,Q,Qbar);
+input D,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=D;
+Qbar=~D;
+end
+endmodule
+```
+## JK Flip Flop:
+```python
+module flipflops(J,K,clk,Q,Qbar);
+input J,K,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(J&(~Q))|((~K)&Q);
+Qbar=((~J)&(Qbar))|K&(~Qbar);
+end
+endmodule
+```
 
-
-
-
-
-
+## T Flip Flop:
+```python
+module flipflops(T,clk,Q,Qbar);
+input T,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(T&(~Q))|((~T)&Q);
+Qbar=((~T)&Qbar)|(T&(~Qbar));
+end
+endmodule
+```
 ### RTL LOGIC FOR FLIPFLOPS 
-
-
-
+### SR Flip Flop:
+![MODEL](/sr1.png)
+### D Flip Flop:
+![MODEL](/d1.png)
+### JK Flip Flop:
+![MODEL](/jk1.png)
+### T Flip Flop:
+![MODEL](/t1.png)
 
 
 
@@ -129,12 +189,16 @@ RegisterNumber:
 
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
+### SR Flip Flop:
+![MODEL](/sr2.png)
+### D Flip Flop:
+![MODEL](/d2.png)
+### JK Flip Flop:
+![MODEL](/jk2.png)
+### T Flip Flop:
+![MODEL](/t2.png)
 
 
 
 ### RESULTS 
+The implementation of SR,JK,D and T flipflops using nand gates are done sucessfully.
